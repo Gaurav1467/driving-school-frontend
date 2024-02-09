@@ -58,6 +58,33 @@ function Profile() {
                             disabled 
                         />
                     </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            required
+                            id="fatherName"
+                            name="fatherName"
+                            label="Father name"
+                            fullWidth
+                            autoComplete="family-name"
+                            variant="standard"
+                            focused
+                            disabled 
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            required
+                            id="moblieNumber"
+                            name="moblieNumber"
+                            label="Moblie Number"
+                            value={"65987953"}
+                            fullWidth
+                            variant="standard"
+                            focused
+                            disabled 
+                            
+                        />
+                    </Grid>
                     <Grid item xs={12}>
                         <TextField
                             required
@@ -117,19 +144,6 @@ function Profile() {
                             label="Country"
                             fullWidth
                             autoComplete="shipping country"
-                            variant="standard"
-                            focused
-                            disabled 
-                            
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            required
-                            id="moblieNumber"
-                            name="moblieNumber"
-                            label="Moblie Number"
-                            fullWidth
                             variant="standard"
                             focused
                             disabled 

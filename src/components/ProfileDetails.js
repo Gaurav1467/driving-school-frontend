@@ -1,16 +1,30 @@
-import * as React from 'react';
+import { Fragment, useContext, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Box, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; 
+import userContext from '../context/user/userContext';
 
 export default function ProfileDetails() {
+
+    
+    
+    const context = useContext(userContext);
+    const { user, setUser, addUser} = context;
+    
+    const [credentials, setCredentials] = useState(user);
+
     const navigate = useNavigate();
     
     const handleSubmit = (e)=> {
+
         navigate('/dashboard');
+    }
+
+    const onChange = (e) => {
+        setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
         <Container sx={{
@@ -22,7 +36,7 @@ export default function ProfileDetails() {
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            <React.Fragment>
+            <Fragment>
                 <Typography sx={{
                     mb : 1
                 }} variant="h6" gutterBottom>
@@ -39,6 +53,7 @@ export default function ProfileDetails() {
                                 fullWidth
                                 autoComplete="given-name"
                                 variant="standard"
+                                onChange={onChange}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -50,6 +65,31 @@ export default function ProfileDetails() {
                                 fullWidth
                                 autoComplete="family-name"
                                 variant="standard"
+                                onChange={onChange}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                required
+                                id="fatherName"
+                                name="fatherName"
+                                label="Father name"
+                                fullWidth
+                                autoComplete="family-name"
+                                variant="standard"
+                                onChange={onChange}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                required
+                                id="mobileNumber"
+                                name="moblileNumber"
+                                label="Mobile Number"
+                                fullWidth
+                                autoComplete="family-name"
+                                variant="standard"
+                                onChange={onChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -61,6 +101,7 @@ export default function ProfileDetails() {
                                 fullWidth
                                 autoComplete="shipping address-line1"
                                 variant="standard"
+                                onChange={onChange}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -72,6 +113,7 @@ export default function ProfileDetails() {
                                 fullWidth
                                 autoComplete="shipping address-level2"
                                 variant="standard"
+                                onChange={onChange}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -81,6 +123,7 @@ export default function ProfileDetails() {
                                 label="State/Province/Region"
                                 fullWidth
                                 variant="standard"
+                                onChange={onChange}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -92,6 +135,7 @@ export default function ProfileDetails() {
                                 fullWidth
                                 autoComplete="shipping postal-code"
                                 variant="standard"
+                                onChange={onChange}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -103,6 +147,7 @@ export default function ProfileDetails() {
                                 fullWidth
                                 autoComplete="shipping country"
                                 variant="standard"
+                                onChange={onChange}
                             />
                         </Grid>
                     </Grid>
@@ -114,7 +159,7 @@ export default function ProfileDetails() {
                             Submit
                         </Button>
                 </Box>
-            </React.Fragment>
+            </Fragment>
 
         </Container>
 

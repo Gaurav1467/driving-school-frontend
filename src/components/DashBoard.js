@@ -7,9 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
-import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import Profile from './Profile';
@@ -18,7 +16,10 @@ import Performance from './Performance';
 import BarChartRoundedIcon from '@mui/icons-material/BarChartRounded';
 import AssignmentTurnedInRoundedIcon from '@mui/icons-material/AssignmentTurnedInRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-
+import DriveEtaIcon from '@mui/icons-material/DriveEta';
+import Licence from './driving-license/Licence';
+// import ReactPDF from '@react-pdf/renderer';
+import { PDFViewer } from '@react-pdf/renderer';
 
 const drawerWidth = 240;
 
@@ -164,6 +165,32 @@ export default function Dashboard() {
                             <Divider sx={{ my: 1 }} />
 
                         </List>
+                        <List component="nav" 
+                        sx={{
+                            display : 'flex',
+                            justifyContent : 'center'
+                        }}
+                        >
+                            <Button sx={{
+                                width: "100%",
+                                height : "100%",
+                                color: "#42b7ff"
+                            }} onClick={()=>{setDisplay("DL")}}>
+                                <Box sx={{
+                                    display : 'flex',
+                                    alignItems : "center",
+                                    justifyContent : "center",
+                                    height : "10px",
+                                    pb : 1,
+                                    mt : 0,
+                                    color: "#42b7ff"
+                                }}>
+                                <DriveEtaIcon />
+                                </Box>
+                                Learner Licence</Button>
+                            <Divider sx={{ my: 1 }} />
+
+                        </List>
                     </Box> 
                 </Drawer>
                 <Box
@@ -180,7 +207,7 @@ export default function Dashboard() {
                 >
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        {display === 'profile' ? <Profile/>: display === "test" ?<Test/> : <Performance/>}
+                        {display === 'profile' ? <Profile/>: display === "test" ?<Test/> : display === "DL" ? <Licence /> : <Performance/>}
                     </Container>
                 </Box>
             </Box>
